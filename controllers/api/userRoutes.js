@@ -1,5 +1,18 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Project, } = require('../../models');
+
+router.get('/', async(req, res) => {
+    try {
+      const userData = await User.findAll(
+        {include: [{ model: Project, attributes: ['id','name', 'description', 'date_created','user_id'] }]}
+      );
+      res.status(200).json(userData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+  
+
 
 router.post('/', async (req, res) => {
   try {

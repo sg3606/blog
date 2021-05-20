@@ -1,8 +1,23 @@
 <div class="text-center">
+  <div>
   <h2>{{name}}</h2>
   <p>{{description}}</p>
   <p>Created by {{user.name}}</p>
+  </div>
+
+  <div>
+  {{#each replies as |reply|}}
+    <p>{{reply.reply_dis}}</p>
+    <p>Comment by {{user.name}}</p>
+  {{/each}}
+  </div>
+  
+  <div>
+    <textarea class="form-input" id="project-reply" name="project-reply"></textarea>
   <p>
-    <button class="btn btn-primary">Reply!</button>
+    <button class="btn btn-primary" id = "replybtn" value = {{id}}>Reply!</button>
   </p>
+  </div>
 </div>
+
+<script src="../js/project.js"></script>

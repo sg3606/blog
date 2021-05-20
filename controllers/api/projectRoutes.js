@@ -1,6 +1,17 @@
 const router = require('express').Router();
-const { Project } = require('../../models');
+const { Project, Reply } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+router.get('/', async(req, res) => {
+  try {
+    const projectDate = await Project.findAll(
+      {include: [{ model: Reply, attributes: ['id', 'reply_dis','user_id'] }]}
+    );
+    res.status(200).json(projectDate);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post('/', withAuth, async (req, res) => {
   try {
@@ -12,6 +23,26 @@ router.post('/', withAuth, async (req, res) => {
     res.status(200).json(newProject);
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.put('/:id', async(req, res) => {
+  try {
+    const newProject = await Project.update(req.body,{
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      }
+    });
+
+    if (!newProject) {
+      res.status(404).json({ message: 'No project found' });
+      return;
+    }
+
+    res.status(200).json(newProject);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
