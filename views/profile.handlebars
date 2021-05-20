@@ -4,47 +4,48 @@
   </div>
 </div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
+<div id = "">
+  <div class="">
+    <div id ="newpost" >
     <h3>New Post:</h3>
-
     <form class="form new-project-form">
       <div class="form-group">
-        <label for="project-name">name:</label>
+        <label for="project-name">Title:</label>
         <input class="form-input" type="text" id="project-name" name="project-name" />
       </div>
       <div class="form-group">
-        <label for="project-desc">description:</label>
+        <label for="project-desc">Description:</label>
         <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
       </div>
     </form>
+    </div>
   </div>
 
   {{#if projects.length}}
-  <div class="col-md-6 project-list">
+  <div class="project-list">
     <h3>Current Posts:</h3>
 
     {{#each projects as |project|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
+    <div id = "updatapost">
+      <div class="">
         <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
       </div>
       <form class="form update-project-form">
       <div class="form-group">
-        <label for="project-name">name:</label>
+        <label for="project-name">Title:</label>
         <input class="form-input" type="text" id="update-name" name="update-name" value="{{project.name}}">
       </div>
       <div class="form-group">
-        <label for="project-desc">description:</label>
+        <label for="project-desc">Description:</label>
         <textarea class="form-input" id="update-desc" name="update-desc">{{project.description}}</textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary" id = "update-btn" value="{{project.id}}">Update</button>
       </div>
-      <div class="col-md-4">
+      <div class="">
         <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
       </div>
     </form>

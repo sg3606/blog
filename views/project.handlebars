@@ -1,17 +1,22 @@
 <div class="text-center">
-  <div>
+  <div id = 'thispost'>
   <h2>{{name}}</h2>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}}</p>
+  <div id = 'eachpost'>
+  <p id = 'textreply'>{{description}}</p>
+  <p id = 'creator'>-- {{user.name}} {{format_date date_created}}</p>
+  </div>
   </div>
 
-  <div>
+  <div id = 'allreply'>
+  <h2>Comments:</h2>
   {{#each replies as |reply|}}
-    <p>{{reply.reply_dis}}</p>
-    <p>Comment by {{user.name}}</p>
+    <div id = 'eachreply'>
+    <p id = 'textreply'>{{reply.reply_dis}}</p>
+    <p id = 'creator'>--{{user.name}} {{format_date date_created}}</p>
+    </div>
   {{/each}}
   </div>
-  
+
   <div>
     <textarea class="form-input" id="project-reply" name="project-reply"></textarea>
   <p>

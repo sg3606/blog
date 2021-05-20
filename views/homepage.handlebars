@@ -12,7 +12,7 @@
     <p>
       {{project.description}}
     </p>
-    <p>Created by {{project.user.name}}</p>
+    <p id='creator'>--{{project.user.name}} {{format_date date_created}}</p>
   </div>
 </div>
 {{/each}}
